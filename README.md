@@ -1,2 +1,2 @@
-# ZigaLe.github.io
+# zigale.github.io
 My personal web page
