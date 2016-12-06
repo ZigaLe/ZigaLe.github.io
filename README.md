@@ -1,2 +1,2 @@
-# nullseq.github.io
+# yankput.github.io
 My personal web page
