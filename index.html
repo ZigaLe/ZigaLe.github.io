@@ -1,7 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Serif|Titillium+Web|Fira+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Serif|Titillium+Web" rel="stylesheet">
 
         <style>
             body {
@@ -10,11 +10,11 @@
             }
 
             header {
-                margin: 2vw;
+                margin: 2.5vw;
                 display: flex;
                 justify-content: space-between;
 
-                font-family: 'Noto Sans', sans-serif;
+                font-family: 'Titillium Web', sans-serif;
                 font-weight: normal;
                 font-size: 1.2em;
             }
@@ -29,7 +29,8 @@
             }
 
             #container {
-                margin: 8vw 14vw;
+                margin: 5vw auto;
+                max-width: 1000px;
 
                 display: flex;
                 flex-direction: column;
@@ -96,9 +97,14 @@
             }
 
             .content-text {
-
                 font-family: 'Noto Serif', serif;
                 text-align: justify;
+                line-height: 2;
+            }
+
+            .content-sub {
+                font-family: 'Noto Serif', serif;
+                color: gray;
             }
 
             .content-tags {
@@ -106,6 +112,7 @@
                 /*font-style: italic;*/
                 font-size: 0.8em;
                 color: gray;
+                word-spacing: 0.4em;
             }
 
         </style>
@@ -148,12 +155,14 @@
         <div id="container">
             <div class="content-entry">
                 <span class="content-title">Personal web page</span>
-                <div class="content-tags">2018-06-02</div>
+                <div class="content-tags">2018-06-02 #general #web</div>
                 <p class="content-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lectus nisl, fermentum sed vestibulum quis, interdum et nibh. Ut vulputate mollis lacus, sed dapibus nulla feugiat id. Aliquam tortor enim, hendrerit eget eleifend at, consequat quis ipsum. Nam lorem est, interdum elementum condimentum a, finibus eget mauris. Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris cursus viverra odio et placerat. Praesent rutrum metus neque, eu porttitor metus finibus sit amet. Morbi ante felis, dictum a egestas vel, porta in elit. Vivamus massa quam, porta ut tortor ac, luctus lobortis ligula. Fusce ut ex elit. Curabitur non faucibus nisl. Etiam pulvinar lacus vel aliquet suscipit. Nulla at porttitor enim, in efficitur justo. Sed sollicitudin orci eget nibh semper, eget aliquet lacus porttitor.
 </p>
+                <div class="content-sub">read more</div>
             </div>
             <div class="content-entry">
                 <span class="content-title">Personal web page</span>
+                <div class="content-tags">2018-06-02 #general #web</div>
                 <p class="content-text">This is my web page</p>
                 <!--<p class="content-tags">#general #web</p>-->
             </div>
