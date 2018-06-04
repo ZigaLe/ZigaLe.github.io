@@ -1,11 +1,11 @@
-<html>
-    <head>
+<html><head>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Serif" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Serif|Titillium+Web|Fira+Sans" rel="stylesheet">
 
         <style>
             body {
-                color: #222222;
+                color: #252922;
+                background-color: #FEFEFE;
             }
 
             header {
@@ -19,14 +19,13 @@
             }
 
             #container {
-                margin: 6vw 16vw;
+                margin: 8vw 14vw 0 14vw;
 
                 display: flex;
                 flex-direction: column;
             }
 
             #title {
-                font-family: 'Noto Sans', sans-serif;
                 font-weight: normal;
             }
 
@@ -53,21 +52,8 @@
                 }
             }
 
-            #menu {
-                display: flex;
-            }
-
-            #navigation {
-                margin-right: 3em;
-                word-spacing: 2em;
-            }
-
-            #contacts {
-                word-spacing: 0.1em;
-            }
-
             a {
-                color: #222222;
+                color: #252922;
                 text-decoration: none;
             }
 
@@ -75,33 +61,43 @@
                 color: darkgray;
             }
 
-            .content {
-                margin-top: 2em;
+
+            #menu {
+                display: flex;
+            }
+
+            #navigation {
+                word-spacing: 2em;
+                margin: 0 4em;
+            }
+
+            #contacts {
+                word-spacing: 0.4em;
             }
 
             .content-entry {
-                margin-top: 0;
-                margin-bottom: 3em;
+                margin: 1em 0;
             }
 
             .content-title {
                 font-family: 'Noto Sans', sans-serif;
                 font-weight: bold;
-                font-size: 1.6em;
+                font-size: 1.8em;
             }
 
             .content-text {
-                margin-top: 0.5em;
-                margin-bottom: 0.25em;
 
                 font-family: 'Noto Serif', serif;
+                text-align: justify;
             }
 
             .content-tags {
-                font-family: 'Noto Serif', serif;
-                font-style: italic;
+                font-family: 'Noto Sans', sans-serif;
+                /*font-style: italic;*/
+                font-size: 0.8em;
                 color: gray;
             }
+
         </style>
 
         <script>
@@ -121,7 +117,7 @@
     </head>
     <body>
         <header>
-            <div id="title">Žiga Leber <span id="block" class="blink">▊</span></div>
+            <div id="title">Žiga Leber <span id="block" class="blink">▋</span></div>
 
             <div id="menu">
                 <nav id="navigation">
@@ -129,45 +125,41 @@
                     <a>Projects</a>
                     <a>About</a>
                 </nav>
-
+                
                 <div id="contacts">
-                    <a href="mailto:brokenpylons@gmail.com" class="fas fa-envelope-square"></a>
-                    <a href="https://github.com/brokenpylons" class="fab fa-github-square"></a>
-                    <a href="https://twitter.com/brokenpylons" class="fab fa-twitter-square"></a>
-                    <a href="https://www.facebook.com/ziga.le.1" class="fab fa-facebook-square"></a>
+                    <a href="mailto:brokenpylons@gmail.com" class="fas fa-at"></a>
+                    <a href="https://github.com/brokenpylons" class="fab fa-github"></a>
+                    <a href="https://twitter.com/brokenpylons" class="fab fa-twitter"></a>
+                    <a href="https://www.facebook.com/ziga.le.1" class="fab fa-facebook"></a>
                 </div>
             </div>
         </header>
 
         <div id="container">
 
-           <div id="blog" class="content">
                 <div class="content-entry">
                     <span class="content-title">Personal web page</span>
-                    <p class="content-text">This is my web page</p>
-                    <p class="content-tags">#general #web</p>
+                    <div class="content-tags">2018-06-02</div>
+                    <p class="content-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lectus nisl, fermentum sed vestibulum quis, interdum et nibh. Ut vulputate mollis lacus, sed dapibus nulla feugiat id. Aliquam tortor enim, hendrerit eget eleifend at, consequat quis ipsum. Nam lorem est, interdum elementum condimentum a, finibus eget mauris. Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris cursus viverra odio et placerat. Praesent rutrum metus neque, eu porttitor metus finibus sit amet. Morbi ante felis, dictum a egestas vel, porta in elit. Vivamus massa quam, porta ut tortor ac, luctus lobortis ligula. Fusce ut ex elit. Curabitur non faucibus nisl. Etiam pulvinar lacus vel aliquet suscipit. Nulla at porttitor enim, in efficitur justo. Sed sollicitudin orci eget nibh semper, eget aliquet lacus porttitor.
+</p>
                 </div>
                 <div class="content-entry">
                     <span class="content-title">Personal web page</span>
                     <p class="content-text">This is my web page</p>
-                    <p class="content-tags">#general #web</p>
+                    <!--<p class="content-tags">#general #web</p>-->
                 </div>
-            </div>
 
-           <div id="projects" class="content">
                 <div class="content-entry">
                     <span class="content-title">Myo Linux</span>
                     <p class="content-text">C++ library for interfacing with the Myo armband on Linux.</p>
                 </div>
-            </div>
 
-            <div id="about" class="content">
                 <p class="content-text">
                 Hi, I'm Žiga!<br>
                 I code stuff.
                 </p>
             </div>
-        </div>
+        
+    
 
-    </body>
-</html>
+</body></html>
