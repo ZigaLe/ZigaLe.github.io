@@ -2,183 +2,80 @@
     <head>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Serif|Titillium+Web" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
 
-        <style>
-            body {
-                color: #252922;
-                background-color: #FEFEFE;
-            }
-
-            header {
-                margin: 2.5vw;
-                display: flex;
-                justify-content: space-between;
-
-                font-family: 'Titillium Web', sans-serif;
-                font-weight: normal;
-                font-size: 1.2em;
-            }
-
-            footer {
-                display: flex;
-                justify-content: center;
-
-                font-family: 'Noto Sans', sans-serif;
-                font-size: 0.8em;
-                color: gray;
-            }
-
-            #container {
-                margin: 5vw auto;
-                max-width: 1000px;
-
-                display: flex;
-                flex-direction: column;
-            }
-
-            #title {
-                font-weight: normal;
-            }
-
-            #block {
-                font-size: 0.8em;
-                margin: 0.4em;
-                vertical-align: 8%;
-            }
-
-            .blink {
-                animation: blink 2s linear infinite;
-            }
-
-            @keyframes blink {
-                0% {
-                    visibility: hidden;
-
-                }
-                50% {
-                    visibility: hidden;
-                }
-                100% {
-                    visibility: visible;
-                }
-            }
-
-            a {
-                color: #252922;
-                text-decoration: none;
-            }
-
-            a:hover {
-                color: darkgray;
-            }
-
-
-            #menu {
-                display: flex;
-            }
-
-            #navigation {
-                word-spacing: 2em;
-                margin: 0 4em;
-            }
-
-            #contacts {
-                word-spacing: 0.4em;
-            }
-
-            .content-entry {
-                margin: 1em 0;
-            }
-
-            .content-title {
-                font-family: 'Noto Sans', sans-serif;
-                font-weight: bold;
-                font-size: 1.8em;
-            }
-
-            .content-text {
-                font-family: 'Noto Serif', serif;
-                text-align: justify;
-                line-height: 2;
-            }
-
-            .content-sub {
-                font-family: 'Noto Serif', serif;
-                color: gray;
-            }
-
-            .content-tags {
-                font-family: 'Noto Sans', sans-serif;
-                /*font-style: italic;*/
-                font-size: 0.8em;
-                color: gray;
-                word-spacing: 0.4em;
-            }
-
-        </style>
-
-        <script>
-            function show_blog() {
-
-            }
-
-            function show_projects() {
-
-            }
-
-            function show_about() {
-
-            }
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
+        <script id="project-github-template" type="x-tmpl-mustache">
+            {{#.}}
+            <div class="content-entry">
+                <a class="content-title" href="{{html_url}}">{{name}}</a>
+                <div class="content-tags">{{pushed_at}}&emsp;{{license.key}}&emsp;<a href="{{html_url}}/stargazers"><ion-icon name="star"></ion-icon> {{stargazers_count}}</a>&emsp;<a href="{{html_url}}/network"><ion-icon name="git-network"></ion-icon> {{forks_count}}</a></div>
+                <p class="content-text">{{description}}</p>
+            </div>
+            {{/.}}
         </script>
+        <script id="blog-template" type="x-tmpl-mustache">
+            {{#.}}
+            <div class="content-entry">
+                <a class="content-title" href="{{html_url}}">{{name}}</a>
+                <div class="content-tags">{{pushed_at}}&emsp;{{license.key}}&emsp;<a href="{{html_url}}/stargazers"><ion-icon name="star"></ion-icon> {{stargazers_count}}</a>&emsp;<a href="{{html_url}}/network"><ion-icon name="git-network"></ion-icon> {{forks_count}}</a></div>
+                <p class="content-text">{{description}}</p>
+            </div>
+            {{/.}}
+        </script>
+        <script src="index.js" defer></script>
     </head>
     <body>
-        <header>
-            <div id="title">Žiga Leber <span id="block" class="blink">▋</span></div>
+        <div>
+            <header>
+                <div id="title">Žiga Leber <span id="block" class="blink">▋</span></div>
 
-            <div id="menu">
-                <nav id="navigation">
-                    <a>Blog</a>
-                    <a>Projects</a>
-                    <a>About</a>
-                </nav>
-                
-                <div id="contacts">
-                    <a href="mailto:brokenpylons@gmail.com" class="fas fa-at"></a>
-                    <a href="https://github.com/brokenpylons" class="fab fa-github"></a>
-                    <a href="https://twitter.com/brokenpylons" class="fab fa-twitter"></a>
-                    <a href="https://www.facebook.com/ziga.le.1" class="fab fa-facebook"></a>
+                <div id="menu">
+                    <nav id="navigation">
+                        <a>Blog</a>
+                        <a id='projects'>Projects</a>
+                        <a>About</a>
+                    </nav>
+                    
+                    <div id="contacts">
+                        <a href="mailto:brokenpylons@gmail.com"><ion-icon name="ios-at"></ion-icon></a>
+                        <a href="https://github.com/brokenpylons"><ion-icon name="logo-github"></ion-icon></a>
+                        <a href="https://twitter.com/brokenpylons"><ion-icon name="logo-twitter"></ion-icon></a>
+                        <a href="https://www.facebook.com/ziga.le.1"><ion-icon name="logo-facebook"></ion-icon></a>
+                    </div>
                 </div>
-            </div>
-        </header>
+            </header>
 
-        <div id="container">
-            <div class="content-entry">
-                <span class="content-title">Personal web page</span>
-                <div class="content-tags">2018-06-02 #general #web</div>
-                <p class="content-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lectus nisl, fermentum sed vestibulum quis, interdum et nibh. Ut vulputate mollis lacus, sed dapibus nulla feugiat id. Aliquam tortor enim, hendrerit eget eleifend at, consequat quis ipsum. Nam lorem est, interdum elementum condimentum a, finibus eget mauris. Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris cursus viverra odio et placerat. Praesent rutrum metus neque, eu porttitor metus finibus sit amet. Morbi ante felis, dictum a egestas vel, porta in elit. Vivamus massa quam, porta ut tortor ac, luctus lobortis ligula. Fusce ut ex elit. Curabitur non faucibus nisl. Etiam pulvinar lacus vel aliquet suscipit. Nulla at porttitor enim, in efficitur justo. Sed sollicitudin orci eget nibh semper, eget aliquet lacus porttitor.
-</p>
-                <div class="content-sub">read more</div>
-            </div>
-            <div class="content-entry">
-                <span class="content-title">Personal web page</span>
-                <div class="content-tags">2018-06-02 #general #web</div>
-                <p class="content-text">This is my web page</p>
-                <!--<p class="content-tags">#general #web</p>-->
-            </div>
+            <div id="content">
+               <!--<div class="content-entry">
+                    <span class="content-title">Personal web page</span>
+                    <div class="content-tags">2018-06-02 #general #web</div>
+                    <p class="content-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lectus nisl, fermentum sed vestibulum quis, interdum et nibh. Ut vulputate mollis lacus, sed dapibus nulla feugiat id. Aliquam tortor enim, hendrerit eget eleifend at, consequat quis ipsum. Nam lorem est, interdum elementum condimentum a, finibus eget mauris. Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris cursus viverra odio et placerat. Praesent rutrum metus neque, eu porttitor metus finibus sit amet. Morbi ante felis, dictum a egestas vel, porta in elit. Vivamus massa quam, porta ut tortor ac, luctus lobortis ligula. Fusce ut ex elit. Curabitur non faucibus nisl. Etiam pulvinar lacus vel aliquet suscipit. Nulla at porttitor enim, in efficitur justo. Sed sollicitudin orci eget nibh semper, eget aliquet lacus porttitor.
+    </p>
+                    <div class="content-sub">read more</div>
+                </div>
+                <div class="content-entry">
+                    <span class="content-title">Personal web page</span>
+                    <div class="content-tags">2018-06-02 #general #web</div>
+                    <p class="content-text">This is my web page</p>
+                </div>
 
-            <div class="content-entry">
-                <span class="content-title">Myo Linux</span>
-                <p class="content-text">C++ library for interfacing with the Myo armband on Linux.</p>
-            </div>
+                <div class="content-entry">
+                    <span class="content-title">Myo Linux</span>
+                    <p class="content-text">C++ library for interfacing with the Myo armband on Linux.</p>
+                </div>
 
-            <p class="content-text">
-            Hi, I'm Žiga!<br>
-            I code stuff.
-            </p>
+                <p class="content-text">
+                Hi, I'm Žiga!<br>
+                I code stuff.
+                </p> --> 
+            </div>
         </div>
+
         <footer>
         Copyright © 2018 Žiga Leber. This site uses cookies.
         </footer>
+
+        <script src="https://unpkg.com/ionicons@4.1.2/dist/ionicons.js"></script>
     </body>
 </html>
