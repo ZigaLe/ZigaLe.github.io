@@ -24,12 +24,18 @@ footer {
     color: gray;
 }
 
+h1 {
+    font-family: 'Noto Sans', sans-serif;
+}
+
 #content {
     margin: 5vw auto;
     max-width: 1000px;
 
     display: flex;
     flex-direction: column;
+
+    font-family: 'Noto Serif', serif;
 }
 
 #title {

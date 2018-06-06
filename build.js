@@ -21,6 +21,8 @@ fs.readdirSync("templates/blog").forEach(file => {
     const parsed = reader.parse(md);
     const html = writer.render(parsed);
 
+    view.description = parsed.firstChild.firstChild.literal;
+
     const template = fs.readFileSync("templates/blog.mustache", "utf-8");
     const output = mustache.render(template, view, {
         content: html,
