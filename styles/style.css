@@ -119,7 +119,7 @@ nav > a {
 .content-title {
     font-family: 'Noto Sans', sans-serif;
     font-weight: bold;
-    font-size: 1.7em;
+    font-size: 1.8em;
 }
 
 .content-text {
@@ -136,11 +136,10 @@ nav > a {
 .content-tags {
     font-family: 'Noto Sans', sans-serif;
     /*font-style: italic;*/
-    font-size: 0.8em;
+    font-size: 0.7em;
     color: gray;
 }
 
 ion-icon {
-    vertical-align: 9%;
     font-size: 0.7em;
 }

@@ -1,17 +1,11 @@
 "use strict"
 
-function show_blog() {
-
-}
-
-
 const selected_projects = [
     "MyoLinux",
     "dirtool"
 ];
 
-const projects = document.getElementById('projects');
-projects.onclick = () => {
+window.onload = () => {
 
     const request = new XMLHttpRequest();
     request.onreadystatechange = () => {
@@ -34,14 +28,22 @@ projects.onclick = () => {
             }
             
             const content = document.getElementById("content");
-            const template = document.getElementById("project-github-template").innerHTML;
+            const template = `
+                {{#.}}
+                <div class="content-entry">
+                    <a class="content-title" href="{{html_url}}">{{name}}</a>
+                    <div class="content-tags">
+                        {{pushed_at}}&emsp;
+                        {{license.key}}&emsp;
+                        <a href="{{html_url}}/stargazers"><ion-icon name="star"></ion-icon> {{stargazers_count}}</a>&emsp;
+                        <a href="{{html_url}}/network"><ion-icon name="git-network"></ion-icon> {{forks_count}}</a>
+                    </div>
+                    <p class="content-text">{{description}}</p>
+                </div>
+                {{/.}}`;
             content.innerHTML = Mustache.render(template, items);
         }
     }
     request.open("GET", "https://api.github.com/users/brokenpylons/repos", true);
     request.send();
-}
-
-function show_about() {
-
 }

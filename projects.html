@@ -3,20 +3,8 @@
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Serif|Titillium+Web" rel="stylesheet">
 
         <link href="styles/style.css" rel="stylesheet">
-        <script>
-            <%#.%>
-            <div class="content-entry">
-                <a class="content-title" href="<%html_url%>"><%name%></a>
-                <div class="content-tags">
-                    <%pushed_at%>&emsp;
-                    <%license.key%>&emsp;
-                    <a href="<%html_url%>/stargazers"><ion-icon name="star"></ion-icon> <%stargazers_count%></a>&emsp;
-                    <a href="<%html_url%>/network"><ion-icon name="git-network"></ion-icon> <%forks_count%></a>
-                </div>
-                <p class="content-text"><%description%></p>
-            </div>
-            <%/.%>
-        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js" type="text/javascript"></script>
+        <script src="scripts/projects.js" type="text/javascript"></script>
     </head>
     <body>
         <div>
