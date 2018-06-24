@@ -37,7 +37,7 @@ h1 {
     flex-direction: column;
 }
 
-#content > p {  
+#content p {  
     font-family: 'Noto Serif', serif;
     text-align: justify;
     line-height: 2;

@@ -53,10 +53,3 @@ output = mustache.render(template, metadata, {
     footer: footer
 });
 fs.writeFileSync("blog.html", output); 
-
-template = fs.readFileSync("templates/about.mustache", "utf-8");
-output = mustache.render(template, {}, {
-    header: header,
-    footer: footer
-});
-fs.writeFileSync("about.html", output); 

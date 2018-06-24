@@ -9,10 +9,12 @@
             {{> header}}
 
             <div id="content">
-                <h1>{{title}}</h1>
-                {{date}}
+                <div class="content-entry">
+                    <div class="content-title">{{title}}</div>
+                    <div class="content-tags">{{date}}</div>
 
-                {{> content}}
+                    {{> content}}
+                </div>
             </div>
         </div>
 
