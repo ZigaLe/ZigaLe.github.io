@@ -2,7 +2,21 @@
     <head>
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Serif|Titillium+Web" rel="stylesheet">
 
-        <link href="../styles/style.css" rel="stylesheet">
+        <link href="styles/style.css" rel="stylesheet">
+        <script>
+            <%#.%>
+            <div class="content-entry">
+                <a class="content-title" href="<%html_url%>"><%name%></a>
+                <div class="content-tags">
+                    <%pushed_at%>&emsp;
+                    <%license.key%>&emsp;
+                    <a href="<%html_url%>/stargazers"><ion-icon name="star"></ion-icon> <%stargazers_count%></a>&emsp;
+                    <a href="<%html_url%>/network"><ion-icon name="git-network"></ion-icon> <%forks_count%></a>
+                </div>
+                <p class="content-text"><%description%></p>
+            </div>
+            <%/.%>
+        </script>
     </head>
     <body>
         <div>
@@ -26,10 +40,6 @@
             </header>
 
             <div id="content">
-                <h1>My personal website</h1>
-                2018-06-05
-
-<p>This is my personal web site. Hello world!</p>
             </div>
         </div>
 

@@ -2,17 +2,22 @@
     <head>
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Serif|Titillium+Web" rel="stylesheet">
 
-        <link href="/styles/style.css" rel="stylesheet">
+        <link href="styles/style.css" rel="stylesheet">
     </head>
     <body>
         <div>
             {{> header}}
 
             <div id="content">
-                <h1>{{title}}</h1>
-                {{date}}
-
-                {{> content}}
+                {{#.}}
+                <div class="content-entry">
+                    <a class="content-title" href="{{&url}}">{{title}}</a>
+                    <div class="content-tags">
+                        {{date}}
+                    </div>
+                    <p class="content-text">{{&description}}</p>
+                </div>
+                {{/.}}
             </div>
         </div>
 

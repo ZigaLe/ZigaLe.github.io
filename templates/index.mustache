@@ -2,23 +2,19 @@
     <head>
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Serif|Titillium+Web" rel="stylesheet">
 
-        <link href="/styles/style.css" rel="stylesheet">
-        <script src="index.js" defer></script>
+        <link href="styles/style.css" rel="stylesheet">
     </head>
     <body>
         <div>
             {{> header}}
 
             <div id="content">
-                {{#.}}
-                <div class="content-entry">
-                    <a class="content-title" href="{{&url}}">{{title}}</a>
-                    <div class="content-tags">
-                        {{date}}
-                    </div>
-                    <p class="content-text">{{description}}</p>
-                </div>
-                {{/.}}
+                <p>Hi, my name is Žiga Leber. I'm a programmer who is passionate about opensource. If there is something I can help you with, you can reach me at <a href="mailto:brokenpylons@gmail.com">brokenpylons@gmail.com</a>.</p>
+
+                <nav>
+                    <a href="blog.html">Blog</a> 
+                    <a href="projects.html">Projects</a> 
+                </nav>
             </div>
         </div>
 

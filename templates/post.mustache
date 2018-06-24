@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Serif|Titillium+Web" rel="stylesheet">
+
+        <link href="../styles/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div>
+            {{> header}}
+
+            <div id="content">
+                <h1>{{title}}</h1>
+                {{date}}
+
+                {{> content}}
+            </div>
+        </div>
+
+        {{> footer}}
+
+        <script src="https://unpkg.com/ionicons@4.1.2/dist/ionicons.js"></script>
+    </body>
+</html>

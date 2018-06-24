@@ -12,7 +12,7 @@ fs.readdirSync("templates/blog").forEach(file => {
 
     const match = data.match(/---([^]+)---/);
     const view = JSON.parse(match[1]);
-    view.url = "/blog/" + html_filename;
+    view.url = "blog/" + html_filename;
     metadata.push(view);
 
     const md = data.substring(match[0].length);
@@ -23,7 +23,7 @@ fs.readdirSync("templates/blog").forEach(file => {
 
     view.description = parsed.firstChild.firstChild.literal;
 
-    const template = fs.readFileSync("templates/blog.mustache", "utf-8");
+    const template = fs.readFileSync("templates/post.mustache", "utf-8");
     const output = mustache.render(template, view, {
         content: html,
         header: header,
@@ -33,9 +33,30 @@ fs.readdirSync("templates/blog").forEach(file => {
    fs.writeFileSync("blog/" + file.replace(".md", ".html"), output); 
 });
 
-const template = fs.readFileSync("templates/index.mustache", "utf-8");
-const output = mustache.render(template, metadata, {
+let template = fs.readFileSync("templates/index.mustache", "utf-8");
+let output = mustache.render(template, {}, {
     header: header,
     footer: footer
 });
 fs.writeFileSync("index.html", output); 
+
+template = fs.readFileSync("templates/projects.mustache", "utf-8");
+output = mustache.render(template, {}, {
+    header: header,
+    footer: footer
+});
+fs.writeFileSync("projects.html", output); 
+
+template = fs.readFileSync("templates/blog.mustache", "utf-8");
+output = mustache.render(template, metadata, {
+    header: header,
+    footer: footer
+});
+fs.writeFileSync("blog.html", output); 
+
+template = fs.readFileSync("templates/about.mustache", "utf-8");
+output = mustache.render(template, {}, {
+    header: header,
+    footer: footer
+});
+fs.writeFileSync("about.html", output); 
