@@ -29,7 +29,14 @@ footer {
 }
 
 h1 {
-    font-family: 'Noto Sans', sans-serif;
+    font-size: 1.8em;
+}
+
+pre {
+    padding: 1em;
+    background-color: #EFEFEF;
+    border-left: black solid;
+
 }
 
 #content {  
@@ -113,13 +120,13 @@ nav > a {
 }
 
 .content-entry {
-    margin: 1em 0;
+    margin: 1.5em 0;
 }
 
 .content-title {
     font-family: 'Noto Sans', sans-serif;
     font-weight: bold;
-    font-size: 1.8em;
+    font-size: 2em;
 }
 
 .content-text {
@@ -136,7 +143,7 @@ nav > a {
 .content-tags {
     font-family: 'Noto Sans', sans-serif;
     /*font-style: italic;*/
-    font-size: 0.7em;
+    font-size: 0.8em;
     color: gray;
 }
 

@@ -27,11 +27,11 @@
 
             <div id="content">
                 <div class="content-entry">
-                    <div class="content-title">Configuring mail server with Postifx and Dovecot</div>
+                    <div class="content-title">Configuring a mail server with Postifx and Dovecot</div>
                     <div class="content-tags">2018-06-26</div>
 
 <p>A really dry tutorial on how to install Postfix and Dovecot on an Ubuntu machine.</p>
-<p>#DNS records</p>
+<h1>DNS records</h1>
 <p>Create a A record for the subdomain &quot;mail&quot; that points to the server. Verify with:</p>
 <pre><code class="language-bash">dig A mail.example.com +short  
 </code></pre>
@@ -39,7 +39,7 @@
 <pre><code class="language-bash">dig MX example.com +short
 </code></pre>
 <p>TODO ptr</p>
-<p>#SLL certificates</p>
+<h1>SLL certificates</h1>
 <p>Get a certificate from the Let's encrypt CA using a Certbot client.</p>
 <p>Install the client using:</p>
 <pre><code class="language-bash">apt-get update
@@ -51,12 +51,12 @@ apt-get install certbot
 <p>Obtain the certificate using the built-in webserver:</p>
 <pre><code class="language-bash">sudo certbot certonly --standalone -d mail.example.com --email postmaster@example.com
 </code></pre>
-<p>#Configuring Postfix</p>
+<h1>Configuring Postfix</h1>
 <p>Install postfix using:</p>
 <pre><code class="language-bash">sudo apt-get install postfix
 </code></pre>
-<p>##Minimal config
-Open /etc/postfix/main.cf and set the following options:</p>
+<h2>Minimal config</h2>
+<p>Open /etc/postfix/main.cf and set the following options:</p>
 <pre><code>myhostname = mail.example.com
 mydomain = example.com
 myorigin = $mydomain
@@ -68,7 +68,7 @@ mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
 <p>Emails can now be sent and recieved, test with:</p>
 <pre><code class="language-bash">mail -s &quot;Test&quot; root@example.com &lt; /dev/null
 </code></pre>
-<p>##Setup Secure SMTP</p>
+<h2>Setup Secure SMTP</h2>
 <p>Add the following to main.cf:</p>
 <pre><code>smtp_tls_security_level = may
 smtpd_tls_security_level = may
@@ -78,11 +78,11 @@ smtpd_tls_key_file = /etc/letsencrypt/live/mail.example.com/privkey.pem
 <p>Uncomment the following line in /etc/postfix/master.cf:</p>
 <pre><code>submission inet n       -       y       -       -       smtpd
 </code></pre>
-<p>##Setup SPF</p>
+<h2>Setup SPF</h2>
 <p>Add an apex TXT record with contents (replace IPvX with the actual IPs):</p>
 <pre><code>v=spf1 a mx ip4:IPv4 ip6:IPv6 ~all
 </code></pre>
-<p>##Setup DKIM</p>
+<h2>Setup DKIM</h2>
 <p>Add the following to /etc/opendkim.conf:</p>
 <pre><code>LogWhy                yes
 
@@ -122,15 +122,15 @@ opendkim-genkey -s default -d example.com
 chown opendkim:opendkim default.private
 </code></pre>
 <p>Create a TXT record as specified in /etc/opendkim/keys/example.com/default.txt.</p>
-<p>##Setup DMARC</p>
+<h2>Setup DMARC</h2>
 <p>Create a TXT record &quot;_dmarc&quot; with the contents:</p>
 <pre><code>v=DMARC1; p=none
 </code></pre>
-<p>##Test
-TODO port25
+<h2>Test</h2>
+<p>TODO port25
 TODO gmail</p>
-<p>##Setup aliases</p>
-<p>#Dovecot</p>
+<h2>Setup aliases</h2>
+<h1>Dovecot</h1>
 <p>unix_listener /var/spool/postfix/private/auth {
 mode = 0660</p>
 <h1>Assuming the default Postfix user and group</h1>
@@ -138,7 +138,7 @@ mode = 0660</p>
 group = postfix<br />
 }</p>
 <p>TODO home dir needed</p>
-<p>#Spam Assasin</p>
+<h1>Spam Assasin</h1>
 <p>TODO</p>
                 </div>
             </div>
