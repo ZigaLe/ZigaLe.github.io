@@ -10,12 +10,15 @@
 
             <div id="content">
                 {{#.}}
-                <div class="content-entry">
-                    <a class="content-title" href="{{&url}}">{{title}}</a>
-                    <div class="content-tags">
+                <div class="entry">
+                    <a class="title" href="{{&url}}"><h2>{{title}}</h2></a>
+                    <div class="tags">
                         {{date}}
+                        {{#tags}}
+                            #{{.}}
+                        {{/tags}}
                     </div>
-                    <p class="content-text">{{&description}}</p>
+                    <p>{{&description}}</p>
                 </div>
                 {{/.}}
             </div>

@@ -39,11 +39,6 @@ pre {
 
 }
 
-#content {  
-    display: flex;
-    flex-direction: column;
-}
-
 #content p {  
     font-family: 'Noto Serif', serif;
     text-align: justify;
@@ -85,7 +80,7 @@ a {
     text-decoration: none;
 }
 
-#content p a {
+#content a {
     font-weight: bold;
 }
 
@@ -94,7 +89,7 @@ a:hover {
 }
 
 nav {
-    margin: 1em 0;
+    margin: 1.5em 0;
 }
 
 nav > a {
@@ -110,40 +105,20 @@ nav > a {
     display: flex;
 }
 
-#navigation {
-    word-spacing: 2em;
-    margin: 0 4em;
-}
-
 #contacts {
     word-spacing: 0.1em;
 }
 
-.content-entry {
-    margin: 1.5em 0;
+.entry {
+    margin: 3em 0;
 }
 
-.content-title {
-    font-family: 'Noto Sans', sans-serif;
-    font-weight: bold;
-    font-size: 2em;
+.entry h2, h1 {
+    margin-bottom: 0.1em;    
 }
 
-.content-text {
-    font-family: 'Noto Serif', serif;
-    text-align: justify;
-    line-height: 2;
-}
-
-.content-sub {
-    font-family: 'Noto Serif', serif;
-    color: gray;
-}
-
-.content-tags {
-    font-family: 'Noto Sans', sans-serif;
-    /*font-style: italic;*/
-    font-size: 0.8em;
+.tags {
+    font-size: 0.7em;
     color: gray;
 }
 

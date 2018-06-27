@@ -30,15 +30,15 @@ window.onload = () => {
             const content = document.getElementById("content");
             const template = `
                 {{#.}}
-                <div class="content-entry">
-                    <a class="content-title" href="{{html_url}}">{{name}}</a>
-                    <div class="content-tags">
+                <div class="entry">
+                    <a href="{{html_url}}"><h2>{{name}}</h2></a>
+                    <div class="tags">
                         {{pushed_at}}&emsp;
                         {{license.key}}&emsp;
                         <a href="{{html_url}}/stargazers"><ion-icon name="star"></ion-icon> {{stargazers_count}}</a>&emsp;
                         <a href="{{html_url}}/network"><ion-icon name="git-network"></ion-icon> {{forks_count}}</a>
                     </div>
-                    <p class="content-text">{{description}}</p>
+                    <p>{{description}}</p>
                 </div>
                 {{/.}}`;
             content.innerHTML = Mustache.render(template, items);

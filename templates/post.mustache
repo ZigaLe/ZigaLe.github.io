@@ -8,14 +8,17 @@
         <div>
             {{> header}}
 
-            <div id="content">
-                <div class="content-entry">
-                    <div class="content-title">{{title}}</div>
-                    <div class="content-tags">{{date}}</div>
-
-                    {{> content}}
+            <article id="content">
+                <h1>{{title}}</h1>
+                <div class="tags">
+                    {{date}}
+                    {{#tags}}
+                        #{{.}}
+                    {{/tags}}
                 </div>
-            </div>
+
+                {{> content}}
+            </article>
         </div>
 
         {{> footer}}
