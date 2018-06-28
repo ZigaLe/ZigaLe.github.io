@@ -70,6 +70,7 @@ mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
 <p>Emails can now be sent and received, test with:</p>
 <pre><code class="language-bash">mail -s &quot;Test&quot; root@example.com &lt; /dev/null
 </code></pre>
+<p>Although the postfix server is now fully functional a few more steps are needed to ensure other email providers don't label you as a spammer.</p>
 <h3>Setup Secure SMTP</h3>
 <p>Add the following to main.cf:</p>
 <pre><code>smtp_tls_security_level = may
