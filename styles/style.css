@@ -2,19 +2,16 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
+    min-height: 100vh;
+  
     margin: auto;
-    padding: 1em;
+    padding: 0 1em;
     max-width: 800px;
 
     color: #252922;
     background-color: #FEFEFE;
 
     font-family: 'Noto Sans', sans-serif;
-}
-
-body > div {
-    min-height: calc(100vh - 3.5em);    
 }
 
 header {
@@ -27,6 +24,7 @@ header {
 }
 
 footer {
+    padding: 1em;
     text-align: center;
     font-size: 0.8em;
     color: gray;
