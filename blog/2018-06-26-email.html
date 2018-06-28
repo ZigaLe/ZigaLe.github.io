@@ -27,17 +27,19 @@
                         #web
                 </div>
 
-<p>A really dry tutorial on how to install Postfix and Dovecot on an Ubuntu machine.</p>
+<p>This is a really dry tutorial on how to install Postfix and Dovecot on an Ubuntu machine. This article is intended as a checklist of all needed steps to setup a fully functional mail server. I took care not to override options with default values as it is done in may other tutorials.</p>
 <h2>DNS records</h2>
-<p>Create a A record for the subdomain &quot;mail&quot; that points to the server. Verify with:</p>
+<p>First we need to set the DNS records. Open up the settings at your registrar and create a A record for the subdomain &quot;mail&quot; that points to your mail server. Verify with (expected result is the servers IP):</p>
 <pre><code class="language-bash">dig A mail.example.com +short  
 </code></pre>
-<p>Add a MX record and point it to the created subdomain. Verify with:</p>
+<p>Add a MX record and point it to the created subdomain. Verify with (expected result is mail.example.com):</p>
 <pre><code class="language-bash">dig MX example.com +short
 </code></pre>
-<p>TODO ptr</p>
+<p>Set the hostname of the server by editing the /etc/hostnames file, so the reverse DNS lookup resolves to the same domain otherwise other email providers will label you as a spammer. Verify with (expected result is mail.example.com):</p>
+<pre><code class="language-bash">hostname
+</code></pre>
 <h2>SLL certificates</h2>
-<p>Get a certificate from the Let's encrypt CA using a Certbot client.</p>
+<p>Next you need a certificate to encrypt the communication using SLL. Get a certificate from the Let's encrypt CA using a Certbot client.</p>
 <p>Install the client using:</p>
 <pre><code class="language-bash">apt-get update
 apt-get install software-properties-common
@@ -59,10 +61,13 @@ mydomain = example.com
 myorigin = $mydomain
 mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
 </code></pre>
+<p>To allow plus addressing (email sent to user+tag@example.com will be delivered to user@example.com) also add:</p>
+<pre><code>recipient_delimiter = +
+</code></pre>
 <p>Run the following command to reload the configuration:</p>
 <pre><code class="language-bash">postfix reload
 </code></pre>
-<p>Emails can now be sent and recieved, test with:</p>
+<p>Emails can now be sent and received, test with:</p>
 <pre><code class="language-bash">mail -s &quot;Test&quot; root@example.com &lt; /dev/null
 </code></pre>
 <h3>Setup Secure SMTP</h3>
@@ -76,8 +81,8 @@ smtpd_tls_key_file = /etc/letsencrypt/live/mail.example.com/privkey.pem
 <pre><code>submission inet n       -       y       -       -       smtpd
 </code></pre>
 <h3>Setup SPF</h3>
-<p>Add an apex TXT record with contents (replace IPvX with the actual IPs):</p>
-<pre><code>v=spf1 a mx ip4:IPv4 ip6:IPv6 ~all
+<p>Add an apex TXT record with contents (replace IPX with the actual IPs):</p>
+<pre><code>v=spf1 a mx ip4:IP4 ip6:IP6 ~all
 </code></pre>
 <h3>Setup DKIM</h3>
 <p>Add the following to /etc/opendkim.conf:</p>
@@ -123,20 +128,52 @@ chown opendkim:opendkim default.private
 <p>Create a TXT record &quot;_dmarc&quot; with the contents:</p>
 <pre><code>v=DMARC1; p=none
 </code></pre>
-<h3>Test</h3>
-<p>TODO port25
-TODO gmail</p>
 <h3>Setup aliases</h3>
+<p>Add the following to /etc/alliases:</p>
+<pre><code class="language-bash">postmaster:    root
+abuse:         root
+webmaster:     root
+</code></pre>
+<p>To reload the configuration run:</p>
+<pre><code>newaliases
+</code></pre>
+<h3>Test</h3>
+<p>All major email providers should now accept your emails. You can test this by sending an email to a gmail account. If you look at the email source, SPF, DKIM and DMARC tests gmail preforms should pass.</p>
 <h2>Dovecot</h2>
-<p>unix_listener /var/spool/postfix/private/auth {
-mode = 0660</p>
-<h2>Assuming the default Postfix user and group</h2>
-<p>user = postfix
-group = postfix<br />
-}</p>
-<p>TODO home dir needed</p>
-<h2>Spam Assasin</h2>
-<p>TODO</p>
+<p>Add the following to /etc/postfix/main.cf, so postfix can communicate with dovecot.</p>
+<pre><code>smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
+</code></pre>
+<p>Next you need to configure dovecot. The configuration is stored in /etc/dovecot/conf.d.</p>
+<p>To configure the SLL certificates add the following to 10-ssl.conf:</p>
+<pre><code>ssl = required
+ssl_cert = &lt;/etc/ssl/certs/mailcert.pem
+ssl_key = &lt;/etc/ssl/private/mail.key 
+</code></pre>
+<p>In 10-auth.conf uncomment the following line:</p>
+<pre><code>disable_plaintext_auth = yes
+</code></pre>
+<p>In 10-master.conf add the following into the auth service block:</p>
+<pre><code>service auth {
+  unix_listener /var/spool/postfix/private/auth {
+     mode = 0660
+     ## Assuming the default Postfix user and group
+     user = postfix
+     group = postfix        
+  }
+}
+</code></pre>
+<p>That is it, you can now connect to your server using an email client.</p>
+<h2>Sources</h2>
+<p><a href="https://scaron.info/blog/debian-mail-postfix-dovecot.html">blog1</a>
+<a href="https://scaron.info/blog/debian-mail-spf-dkim.html">blog2</a>
+<a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-postfix-e-mail-server-with-dovecot">digitalocean1</a>
+<a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-dkim-with-postfix-on-debian-wheezy">digitalocean2</a>
+<a href="http://www.postfix.org/BASIC_CONFIGURATION_README.html">official1</a>
+<a href="http://www.postfix.org/STANDARD_CONFIGURATION_README.html#stand_alone">official2</a>
+<a href="https://wiki.archlinux.org/index.php/postfix#Secure_SMTP_.28sending.29">archwiki</a>
+<a href="https://certbot.eff.org/lets-encrypt/ubuntutrusty-other">coreboot</a></p>
             </article>
         </div>
 
